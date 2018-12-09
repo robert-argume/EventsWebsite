@@ -11,3 +11,4 @@
 /bin/
 /composer.phar
 .vscode
+php_errors.log
