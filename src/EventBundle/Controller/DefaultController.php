@@ -9,22 +9,25 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends Controller
 {
     public function indexAction( $name = "Stranger" )
-    {
-        //return $this->render('EventBundle:Default:index.html.twig', array('name' => $name));
+    {   
+        // Simple Response with static text
         //return new Response("Hello from Response !!");
 
-        $message = "Hello from Response !!";
-        $data = array(
-            'name' => $name,
-            'message' => $message 
-        );
+        // Response that takes a view file to render
+        return $this->render('EventBundle:Default:index.html.twig', array('name' => $name));
 
-        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ;
-        //echo "<pre>".$json."</pre>";
-        //die;
-        $response = new Response("<pre>".$json."</pre>");
-        $response->headers->set("Content-Type", "application/json");
-        return $response;
+        // Send a Json as a response, setting the Content-Type accordingly
+        // $message = "Hello from Response !!";
+        // $data = array(
+        //     'name' => $name,
+        //     'message' => $message 
+        // );
+        // $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ;
+        // //echo "<pre>".$json."</pre>";
+        // //die;
+        // $response = new Response($json);
+        // $response->headers->set("Content-Type", "application/json");
+        // return $response;
 
         
         
