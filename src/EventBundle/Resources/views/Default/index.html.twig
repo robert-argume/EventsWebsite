@@ -10,5 +10,14 @@
         {% endfor %}
     </ul>
 
+    <h2>    
+        Event Details
+    </h2>
+    {{event.name}}<br />
+    {{event.location}}<br />
+    {{event.time | date('Y-m-d')}}<br />
+    {{event.details }}<br />
+
+
 {% endblock %}
 

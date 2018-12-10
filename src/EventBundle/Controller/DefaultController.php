@@ -14,7 +14,7 @@ class DefaultController extends Controller
         //return new Response("Hello from Response !!");
 
         // Response that takes a view file to render
-        return $this->render('EventBundle:Default:index.html.twig', array('name' => $name));
+        //return $this->render('EventBundle:Default:index.html.twig', array('name' => $name));
 
         // Send a Json as a response, setting the Content-Type accordingly
         // $message = "Hello from Response !!";
@@ -29,7 +29,22 @@ class DefaultController extends Controller
         // $response->headers->set("Content-Type", "application/json");
         // return $response;
 
-        
+        // Get Doctrine Entity Manager, and get the repository for Bundle Events
+        //$em = $this->container->get('doctrine')->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('EventBundle:Event');
+
+        // Find an event by name in the repository
+        $event = $repo->findOneBy(array(    
+            'name' => 'John\'s suprise birthday party' 
+        ));
+
+        // Render the index view for EventBundle sending data for event
+        return $this->render( 'EventBundle:Default:index.html.twig',array(
+            'name' => $name,
+            'event' => $event
+        ));
+
         
     }
 }

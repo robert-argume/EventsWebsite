@@ -26,8 +26,8 @@ $container->set('request', $request);
 
 // Create an event 
 $event = new Event();
-$event->setName('John\' suprise birthday party');
-$event->setLocation('Centennial College');
+$event->setName('John\'s suprise birthday party');
+$event->setLocation('941 Progress Ave, Scarborough, ON M1G 3T8');
 $birthdayDateTime = new DateTime('2018-12-23 23:00:00');
 $birthdayDateTime->format('Y-m-d H:i:s');
 $event->setTime($birthdayDateTime);
@@ -37,5 +37,7 @@ $event->setDetails("John HATES surprises!");
 $em = $container->get('doctrine')->getManager();
 $em->persist($event);
 $em->flush();
+
+
 
 
